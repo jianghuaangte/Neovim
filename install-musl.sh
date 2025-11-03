@@ -31,6 +31,7 @@ is_platform() {
 }
 
 download_neovim() {
+  apk update
   # 获取包列表
   packages=$(apk fetch --recursive --simulate neovim 2>&1 | awk -F' ' '{print $2}')
   # 镜像源下载
