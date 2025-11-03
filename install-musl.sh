@@ -50,16 +50,16 @@ download_neovim() {
     # 先在community仓库查找
     if curl -s "$COMMUNITY_REPO/APKINDEX.tar.gz" | zcat | grep -q "^P:${pkg_name}$"; then
       echo "  在community仓库找到，开始下载..."
-      curl -s -L -o "$DOWNLOAD_DIR/$pkg.apk" "$COMMUNITY_REPO/$pkg.apk"
+      curl -s -L -o "$is_tmp_dir/$pkg.apk" "$COMMUNITY_REPO/$pkg.apk"
       # 然后在main仓库查找
     elif curl -s "$MAIN_REPO/APKINDEX.tar.gz" | zcat | grep -q "^P:${pkg_name}$"; then
       echo "  在main仓库找到，开始下载..."
-      curl -s -L -o "$DOWNLOAD_DIR/$pkg.apk" "$MAIN_REPO/$pkg.apk"
+      curl -s -L -o "$is_tmp_dir/$pkg.apk" "$MAIN_REPO/$pkg.apk"
     else
       echo "  错误: 在main和community仓库都找不到包 $pkg_name"
     fi
   done
-  echo "下载完成，文件保存在 $DOWNLOAD_DIR/"
+  echo "下载完成，文件保存在 $is_tmp_dir/"
 }
 
 install_apks() {
