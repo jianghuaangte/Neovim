@@ -18,10 +18,10 @@ is_platform() {
 
   case "$platform" in
   x86_64)
-    PACKAGE_DIR="neovim-x86_64"
+    PACKAGE_DIR="x86_64"
     ;;
   aarch64 | arm64)
-    PACKAGE_DIR="neovim-aarch64"
+    PACKAGE_DIR="aarch64"
     ;;
   *)
     echo "\n出错了，不支持的架构\n"
@@ -31,16 +31,41 @@ is_platform() {
 }
 
 download_neovim() {
+  # 获取包列表
+  packages=$(apk fetch --recursive --simulate neovim 2>&1 | awk -F' ' '{print $2}')
+  # 镜像源下载
+  MAIN_REPO="https://mirrors.ustc.edu.cn/alpine/edge/main/${PACKAGE_DIR}"
+  COMMUNITY_REPO="https://mirrors.ustc.edu.cn/alpine/edge/community/${PACKAGE_DIR}"
+
   is_tmp_dir="/tmp/isneovim"
   [ -d "$is_tmp_dir" ] && rm -rf "$is_tmp_dir"
   mkdir -p "$is_tmp_dir"
-  wget -P "$is_tmp_dir" "https://gitcode.com/guoweiwangluo/neovim/releases/download/v0.11.1/${PACKAGE_DIR}.tar.gz"
-  tar zxf ${is_tmp_dir}/${PACKAGE_DIR}.tar.gz -C ${is_tmp_dir}
+
+  # 遍历每个包
+  for pkg in $packages; do
+    # 去掉版本号
+    pkg_name=$(echo "$pkg" | sed 's/-[0-9].*//')
+    echo "正在查找包: $pkg_name"
+    # 先在community仓库查找
+    if curl -s "$COMMUNITY_REPO/APKINDEX.tar.gz" | zcat | grep -q "^P:${pkg_name}$"; then
+      echo "  在community仓库找到，开始下载..."
+      curl -s -L -o "$DOWNLOAD_DIR/$pkg.apk" "$COMMUNITY_REPO/$pkg.apk"
+      # 然后在main仓库查找
+    elif curl -s "$MAIN_REPO/APKINDEX.tar.gz" | zcat | grep -q "^P:${pkg_name}$"; then
+      echo "  在main仓库找到，开始下载..."
+      curl -s -L -o "$DOWNLOAD_DIR/$pkg.apk" "$MAIN_REPO/$pkg.apk"
+    else
+      echo "  错误: 在main和community仓库都找不到包 $pkg_name"
+    fi
+  done
+  echo "下载完成，文件保存在 $DOWNLOAD_DIR/"
 }
 
 install_apks() {
+  echo "开始安装..."
   apk add --no-network --allow-untrusted /tmp/isneovim/*.apk 2>/dev/null
   rm -rf $is_tmp_dir
+  echo "安装完成"
 }
 
 ADD_MINI_CONFIG() {
