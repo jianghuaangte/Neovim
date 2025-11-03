@@ -63,6 +63,7 @@ download_neovim() {
 }
 
 install_apks() {
+  is_tmp_dir="/tmp/isneovim"
   echo "开始安装..."
   apk add --no-network --allow-untrusted /tmp/isneovim/*.apk 2>/dev/null
   rm -rf $is_tmp_dir
