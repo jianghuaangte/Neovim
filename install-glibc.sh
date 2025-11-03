@@ -65,7 +65,7 @@ ADD_PATH() {
   if [ -f "$nvim_path" ]; then
     rm -rf "$nvim_path"
   fi
-  cat <<'EOF' >"$nvim_path"
+  cat <<EOF >"$nvim_path"
 export PATH=\$PATH:/usr/local/nvim/bin
 EOF
 
@@ -89,7 +89,7 @@ ADD_MINI_CONFIG() {
   chown -R "$SUDO_USER:$SUDO_USER" "$NVIM_CONFIG_DIR" 2>/dev/null || true
 
   # 写入配置文件
-  cat <<EOF >"$NVIM_CONFIG_FILE"
+  cat <<'EOF' >"$NVIM_CONFIG_FILE"
 -- 设置行号
 vim.opt.number = true             -- 显示绝对行号
 vim.opt.relativenumber = true     -- 显示相对行号
