@@ -31,6 +31,7 @@ is_platform() {
 }
 
 download_neovim() {
+  sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
   apk update
   # 获取包列表
   packages=$(apk fetch --recursive --simulate neovim 2>&1 | awk -F' ' '{print $2}')
@@ -82,7 +83,7 @@ ADD_MINI_CONFIG() {
   mkdir -p "$NVIM_CONFIG_DIR"
   chown -R "$SUDO_USER:$SUDO_USER" "$NVIM_CONFIG_DIR" 2>/dev/null || true
 
-  cat >"$NVIM_CONFIG_FILE" <<EOF
+  cat >"$NVIM_CONFIG_FILE" <<'EOF'
 -- 设置行号
 vim.opt.number = true
 vim.opt.relativenumber = true
