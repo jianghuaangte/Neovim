@@ -55,6 +55,12 @@ curl -fsSL https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/uninstal
 wget -O - https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/uninstall-glibc.sh | sudo bash
 ```
 
+**musl**
+```shell
+apk del neovim
+rm -rf ~/.config/nvim/init.lua
+```
+
 ## 支持
 
  - x86_64/arm64 (仅linxu)
