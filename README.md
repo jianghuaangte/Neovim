@@ -17,24 +17,24 @@ nvim_insta=no (不填默认为yes)
 
 **Root 用户**
 ```shell
-curl -fsSL https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/install-glibc.sh | bash
+curl -fsSL https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/install-glibc.sh | bash
 # or
-wget -O - https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/install-glibc.sh | bash
+wget -O - https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/install-glibc.sh | bash
 ```
 
 **非 Root 用户**
 ```shell
-curl -fsSL https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/install-glibc.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/install-glibc.sh | sudo bash
 # or
-wget -O - https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/install-glibc.sh | sudo bash
+wget -O - https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/install-glibc.sh | sudo bash
 ```
 
 **Musl**
 
 ```shell
-wget -O - https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/install-musl.sh | sh
+wget -O - https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/install-musl.sh | sh
 # or
-wget -O - https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/install-musl.sh | sudo sh
+wget -O - https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/install-musl.sh | sudo sh
 ```
 
 
@@ -43,16 +43,16 @@ wget -O - https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/install-m
 
 **Root 用户**
 ```shell
-curl -fsSL https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/uninstall-glibc.sh | bash
+curl -fsSL https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/uninstall-glibc.sh | bash
 # or
-wget -O - https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/uninstall-glibc.sh | bash
+wget -O - https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/uninstall-glibc.sh | bash
 ```
 
 **非 Root 用户**
 ```shell
-curl -fsSL https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/uninstall-glibc.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/uninstall-glibc.sh | sudo bash
 # or
-wget -O - https://raw.bgithub.xyz/jianghuaangte/Neovim/refs/heads/main/uninstall-glibc.sh | sudo bash
+wget -O - https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/uninstall-glibc.sh | sudo bash
 ```
 
 **musl**
