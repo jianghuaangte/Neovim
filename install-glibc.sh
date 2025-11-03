@@ -65,7 +65,7 @@ ADD_PATH() {
   if [ -f "$nvim_path" ]; then
     rm -rf "$nvim_path"
   fi
-  cat <<EOF >"$nvim_path"
+  cat <<'EOF' >"$nvim_path"
 export PATH=\$PATH:/usr/local/nvim/bin
 EOF
 
