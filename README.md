@@ -37,6 +37,13 @@ wget -O - https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main
 wget -O - https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/install-musl.sh | sudo sh
 ```
 
+**Win**
+- 必须以管理员权限运行Posh
+```posh
+$env:GH_PROXY = "https://ghproxy.cn/"
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ghproxy.cn/https://raw.githubusercontent.com/jianghuaangte/Neovim/refs/heads/main/install-win.ps1'))
+```
+
 
 
 ## 卸载
